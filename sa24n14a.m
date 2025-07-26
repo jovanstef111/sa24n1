@@ -113,7 +113,7 @@ tDu=DD(2:4,5:6);
 tGzf=ss(tA,tBf,tCz,tDzf);
 tGzd=ss(tA,tBd,tCz,tDzd);
 tGzu=ss(tA,tBu,tCz,tDzu);
-tzero(tGzu) % tGzu has no zeros in C_+ (it is a tall 3\times 2 matrix) 
+tzero(tGzu) % tGzu has no zeros in C_+ (it is a wide 1\times 2 matrix) 
 
 tGf=ss(tA,tBf,tC,tDf);
 tzero(tGf) % tGf has a zero in s0=1
@@ -125,8 +125,8 @@ tGu=ss(tA,tBu,tC,tDu);
 
 % transfer matrix of filter F
 F=ss(tA-HH*tC,HH,-Y0*tC,Y0);
-norm(eye(2)-minreal(F*tGf),'inf') % computed 3.0039 = \beta_F
-norm(minreal(F*tGd),'inf') % computed 0.6611 = \alpha_F
+norm(eye(2)-minreal(F*tGf),'inf') % computed 3.0039 = \alpha_F
+norm(minreal(F*tGd),'inf') % computed 0.6611 = \beta_F
 
 % Nominal controller
 CoK=nom_contr(tA,tBf,tBd,tBu,tCz,tDzf,tDzd,tDzu,tC,tDf,tDd,tDu)
